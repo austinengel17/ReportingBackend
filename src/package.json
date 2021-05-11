@@ -1,0 +1,16 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "description": "Backend for Reporting System",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Austin Engel",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.7.1",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.5"
+  }
+}

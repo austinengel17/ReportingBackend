@@ -1,0 +1,35 @@
+version: '3.1'
+
+services:
+
+  send:
+    image: node-amqp:build
+    build: ./
+    networks:
+      - rabbitmq_network
+    volumes: 
+      - ./:/workdir
+    restart: on-failure
+    depends_on: 
+      - rabbitmq
+    command: node send.js
+
+  receive:
+    image: node-amqp:build
+    build: ./
+    networks:
+      - rabbitmq_network
+    volumes: 
+      - ./:/workdir
+    restart: on-failure
+    depends_on: 
+      - rabbitmq
+    command: node receive.js
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    networks:
+      - rabbitmq_network
+
+networks:
+  rabbitmq_network:
