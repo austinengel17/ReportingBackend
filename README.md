@@ -1,11 +1,11 @@
 # How The System Works
 
-- The whole working system is under the `src` folder in this repository, only this `ReportingBackend` and `keycloak configuration` have useful items for the reporting system. The other repositories are junk created by accident. (double check before deleting, keycloak is not yet connected to this system do not delete that).
+- The whole working system is under the `src` folder in this repository, only this `ReportingBackend` and `keycloak configuration` have useful items for the reporting system. keycloak is not yet connected to this system.
 - `send.js` and `receive.js` in `SubProcesses` folder (this is under src directory):
     - `node ./SubProcesses/send` will send messages to the message queue (2 queues: inventory and guestinfo). Ctrl c to terminate after it sends.
 
     - `receive.js` starts when the whole system starts.
-        - listens the whole time system runs for new messages on the queue.
+        - listens the whole time system is running for new messages on the queue.
         - when new messages on queue, receive pulls these messages off the queue. It then sends the JSON object to the `insert.js` module.
     - `insert.js` gets the JSON object from receive.js and inserts it into the mongoDB database.
       -Inserted into two collections: `inventory` and `guestinfo`.
